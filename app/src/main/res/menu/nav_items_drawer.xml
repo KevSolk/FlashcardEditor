@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <item android:title="Navigation">
+        <menu>
+            <item android:id="@+id/nav_stacks"
+                android:title="Flashcard Stacks"/>
+            <item android:id="@+id/nav_flashcards"
+                android:title="Flashcards"/>
+            <item android:id="@+id/nav_tags"
+                android:title="Tags"/>
+        </menu>
+    </item>
 </menu>
