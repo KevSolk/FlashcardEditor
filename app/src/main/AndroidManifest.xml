@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FlashcardEditor">
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.StacksMain"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.FlashcardEditor.NoActionBar">
             <intent-filter>
