@@ -17,8 +17,11 @@ data class StackModel(
 
 @Dao
 interface StackDAO{
-    @Query("SELECT * FROM stacks")
-    fun getAll(): Flow<List<CardModel>>
+    @Query("SELECT * FROM stacks LIMIT (:limit)")
+    fun getAll(limit: Int? = 100): Flow<List<CardModel>>
+
+    @Query("SELECT * FROM stacks WHERE (:ids)")
+    fun get(ids: Int)
 
     @Query("DELETE FROM stacks WHERE id IN (:ids)")
     fun delete(vararg ids: Int)

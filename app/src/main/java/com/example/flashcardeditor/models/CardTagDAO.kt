@@ -11,8 +11,12 @@ data class CardTagModel(
 
 @Dao
 interface CardTagDAO{
-    @Query("SELECT * FROM cardTags")
-    fun getAll(): Flow<List<CardTagModel>>
+
+    @Query("SELECT * FROM cardTags WHERE (:cardId) LIMIT (:limit)")
+    fun getAll(limit: Int? = 100, cardId: Int?): Flow<List<CardTagModel>>
+
+    @Query("SELECT * FROM cardTags WHERE (:cardId) AND (:tagId)")
+    fun get(cardId: Int, tagId: Int)
 
     @Query("DELETE FROM cardTags WHERE stackId = :stackId AND cardId = :cardId")
     fun delete(stackId: Int, cardId: Int)

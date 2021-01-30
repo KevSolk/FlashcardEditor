@@ -17,8 +17,11 @@ data class CardModel(
 
 @Dao
 interface CardDAO{
-    @Query("SELECT * FROM cards")
-    fun getAll(): Flow<List<CardModel>>
+    @Query("SELECT * FROM cards LIMIT (:limit)")
+    fun getAll(limit: Int? = 100): Flow<List<CardModel>>
+
+    @Query("SELECT * FROM cards WHERE id IN (:ids)")
+    fun get(ids: Int)
 
     @Query("DELETE FROM cards WHERE id IN (:ids)")
     fun delete(vararg ids: Int)

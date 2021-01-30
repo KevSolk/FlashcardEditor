@@ -16,8 +16,11 @@ data class TagModel(
 
 @Dao
 interface TagDAO{
-    @Query("SELECT * FROM tags")
-    fun getAll(): Flow<List<TagModel>>
+    @Query("SELECT * FROM tags LIMIT (:limit)")
+    fun getAll(limit: Int? = 100): Flow<List<TagModel>>
+
+    @Query("SELECT * FROM tags WHERE (:ids)")
+    fun get(ids: Int)
 
     @Query("DELETE FROM tags WHERE id IN (:ids)")
     fun delete(vararg ids: Int)
